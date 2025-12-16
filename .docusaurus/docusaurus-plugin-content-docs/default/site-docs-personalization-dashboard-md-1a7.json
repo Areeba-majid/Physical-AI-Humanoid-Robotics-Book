@@ -1,0 +1,26 @@
+{
+  "id": "personalization/dashboard",
+  "title": "Personalization Dashboard",
+  "description": "The AI Textbook Platform adapts to your unique learning style and preferences to enhance your educational experience.",
+  "source": "@site/docs/personalization/dashboard.md",
+  "sourceDirName": "personalization",
+  "slug": "/personalization/dashboard",
+  "permalink": "/docs/personalization/dashboard",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/personalization/dashboard.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Personalization Dashboard"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Index",
+    "permalink": "/docs/personalization/"
+  },
+  "next": {
+    "title": "Quiz Index",
+    "permalink": "/docs/quizzes/"
+  }
+}

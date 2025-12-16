@@ -1,0 +1,26 @@
+{
+  "id": "textbook/chapter3",
+  "title": "Chapter 3: Physical AI Systems",
+  "description": "This chapter explores the integration of AI with physical systems, focusing on perception, reasoning, and action in real-world environments.",
+  "source": "@site/docs/textbook/chapter3.md",
+  "sourceDirName": "textbook",
+  "slug": "/textbook/chapter3",
+  "permalink": "/docs/textbook/chapter3",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/textbook/chapter3.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Chapter 3"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 2",
+    "permalink": "/docs/textbook/chapter2"
+  },
+  "next": {
+    "title": "Chapter 4",
+    "permalink": "/docs/textbook/chapter4"
+  }
+}

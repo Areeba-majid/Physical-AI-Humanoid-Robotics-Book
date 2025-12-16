@@ -1,0 +1,117 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "ai-features/rag-chatbot",
+              "path": "/docs/ai-features/rag-chatbot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ai-features/translation",
+              "path": "/docs/ai-features/translation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapter1",
+              "path": "/docs/chapter1",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "getting-started",
+              "path": "/docs/getting-started",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/docs/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "personalization/dashboard",
+              "path": "/docs/personalization/dashboard",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "personalization/index",
+              "path": "/docs/personalization/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "quizzes/chapter1-quiz",
+              "path": "/docs/quizzes/chapter1-quiz"
+            },
+            {
+              "id": "quizzes/chapter2-quiz",
+              "path": "/docs/quizzes/chapter2-quiz"
+            },
+            {
+              "id": "quizzes/chapter3-quiz",
+              "path": "/docs/quizzes/chapter3-quiz"
+            },
+            {
+              "id": "quizzes/chapter4-quiz",
+              "path": "/docs/quizzes/chapter4-quiz"
+            },
+            {
+              "id": "quizzes/final",
+              "path": "/docs/quizzes/final"
+            },
+            {
+              "id": "quizzes/index",
+              "path": "/docs/quizzes/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "quizzes/midterm",
+              "path": "/docs/quizzes/midterm"
+            },
+            {
+              "id": "textbook/chapter2",
+              "path": "/docs/textbook/chapter2",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "textbook/chapter3",
+              "path": "/docs/textbook/chapter3",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "textbook/chapter4",
+              "path": "/docs/textbook/chapter4",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/intro",
+                "label": "intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  },
+  "@cmfcmf/docusaurus-search-local": {
+    "default": {
+      "titleBoost": 5,
+      "contentBoost": 1,
+      "tagsBoost": 3,
+      "parentCategoriesBoost": 2,
+      "indexDocSidebarParentCategories": 0,
+      "maxSearchResults": 8
+    }
+  }
+}

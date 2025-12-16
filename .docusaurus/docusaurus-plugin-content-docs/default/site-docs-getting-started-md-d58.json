@@ -1,0 +1,26 @@
+{
+  "id": "getting-started",
+  "title": "Getting Started",
+  "description": "Welcome to the AI Textbook Platform! This guide will help you navigate and make the most of this interactive textbook.",
+  "source": "@site/docs/getting-started.md",
+  "sourceDirName": ".",
+  "slug": "/getting-started",
+  "permalink": "/docs/getting-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/getting-started.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Getting Started"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/docs/intro"
+  },
+  "next": {
+    "title": "Chapter 1 - Introduction to AI & Robotics",
+    "permalink": "/docs/chapter1"
+  }
+}

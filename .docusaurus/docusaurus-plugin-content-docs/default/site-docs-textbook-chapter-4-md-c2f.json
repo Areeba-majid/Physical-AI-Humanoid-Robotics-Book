@@ -1,0 +1,26 @@
+{
+  "id": "textbook/chapter4",
+  "title": "Chapter 4: Humanoid Robotics",
+  "description": "This chapter explores the fascinating world of humanoid robotics, covering the design, mechanics, and control systems that enable robots to mimic human form and behavior.",
+  "source": "@site/docs/textbook/chapter4.md",
+  "sourceDirName": "textbook",
+  "slug": "/textbook/chapter4",
+  "permalink": "/docs/textbook/chapter4",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/textbook/chapter4.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Chapter 4"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 3",
+    "permalink": "/docs/textbook/chapter3"
+  },
+  "next": {
+    "title": "RAG Chatbot",
+    "permalink": "/docs/ai-features/rag-chatbot"
+  }
+}

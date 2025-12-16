@@ -1,0 +1,22 @@
+{
+  "id": "quizzes/index",
+  "title": "Interactive Quizzes",
+  "description": "Welcome to the quiz section of the AI Textbook Platform. Here you'll find interactive assessments designed to reinforce your understanding of the concepts covered in each chapter.",
+  "source": "@site/docs/quizzes/index.md",
+  "sourceDirName": "quizzes",
+  "slug": "/quizzes/",
+  "permalink": "/docs/quizzes/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/quizzes/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Quiz Index"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Personalization Dashboard",
+    "permalink": "/docs/personalization/dashboard"
+  }
+}

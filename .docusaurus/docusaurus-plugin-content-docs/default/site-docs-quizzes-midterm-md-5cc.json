@@ -1,0 +1,17 @@
+{
+  "id": "quizzes/midterm",
+  "title": "Midterm Assessment",
+  "description": "This comprehensive assessment covers material from Chapters 1-5 of the textbook.",
+  "source": "@site/docs/quizzes/midterm.md",
+  "sourceDirName": "quizzes",
+  "slug": "/quizzes/midterm",
+  "permalink": "/docs/quizzes/midterm",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/quizzes/midterm.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Midterm Assessment"
+  }
+}

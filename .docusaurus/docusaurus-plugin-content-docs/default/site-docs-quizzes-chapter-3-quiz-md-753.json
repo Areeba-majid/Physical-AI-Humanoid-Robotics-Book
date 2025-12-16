@@ -1,0 +1,17 @@
+{
+  "id": "quizzes/chapter3-quiz",
+  "title": "Chapter 3 Quiz: Physical AI Systems",
+  "description": "Complete the quiz below to test your understanding of Chapter 3 concepts.",
+  "source": "@site/docs/quizzes/chapter3-quiz.md",
+  "sourceDirName": "quizzes",
+  "slug": "/quizzes/chapter3-quiz",
+  "permalink": "/docs/quizzes/chapter3-quiz",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/quizzes/chapter3-quiz.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Chapter 3 Quiz"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "quizzes/final",
+  "title": "Final Examination",
+  "description": "This cumulative examination covers all material from the textbook.",
+  "source": "@site/docs/quizzes/final.md",
+  "sourceDirName": "quizzes",
+  "slug": "/quizzes/final",
+  "permalink": "/docs/quizzes/final",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/quizzes/final.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Final Examination"
+  }
+}

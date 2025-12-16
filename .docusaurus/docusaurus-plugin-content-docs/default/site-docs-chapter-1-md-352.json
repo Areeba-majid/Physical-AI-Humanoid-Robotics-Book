@@ -1,0 +1,26 @@
+{
+  "id": "chapter1",
+  "title": "Introduction to AI & Robotics",
+  "description": "Artificial Intelligence (AI) is intelligence demonstrated by machines, in contrast to the natural intelligence displayed by humans and animals. Leading AI textbooks define the field as the study of \"intelligent agents\": any device that perceives its environment and takes actions that maximize its chance of successfully achieving its goals.",
+  "source": "@site/docs/chapter1.md",
+  "sourceDirName": ".",
+  "slug": "/chapter1",
+  "permalink": "/docs/chapter1",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapter1.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "sidebar_label": "Chapter 1 - Introduction to AI & Robotics"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/docs/getting-started"
+  },
+  "next": {
+    "title": "Chapter 2",
+    "permalink": "/docs/textbook/chapter2"
+  }
+}
