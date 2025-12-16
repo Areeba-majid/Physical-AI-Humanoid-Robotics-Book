@@ -1,3 +1,4 @@
+https://github.com/Areeba-majid/Physical-AI-Humanoid-Robotics-Book
 # AI Textbook Platform Frontend
 
 This is the frontend for the AI-native Physical AI & Humanoid Robotics textbook platform, built with Docusaurus.
