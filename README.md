@@ -2,6 +2,9 @@
 
 This is the frontend for the AI-native Physical AI & Humanoid Robotics textbook platform, built with Docusaurus.
 
+## Deployment
+This project is configured for deployment on Vercel.
+
 ## Installation
 
 ```bash
