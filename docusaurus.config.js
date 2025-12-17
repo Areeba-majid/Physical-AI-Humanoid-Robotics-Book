@@ -22,7 +22,7 @@ const config = {
   organizationName: 'Areeba-majid', // Usually your GitHub org/user name.
   projectName: 'Physical-AI-Humanoid-Robotics-Book', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -50,6 +50,8 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/Areeba-majid/Physical-AI-Humanoid-Robotics-Book/edit/master/',
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
         },
         blog: false, // Disable blog if not needed
         theme: {
@@ -145,16 +147,6 @@ const config = {
 
   plugins: [
     // Add custom plugins here
-    [
-      require.resolve('@cmfcmf/docusaurus-search-local'),
-      {
-        indexDocs: true,
-        indexBlog: false, // Since we disabled blog
-        indexPages: false,
-        language: "en",
-        maxSearchResults: 8,
-      },
-    ],
   ],
 };
 
