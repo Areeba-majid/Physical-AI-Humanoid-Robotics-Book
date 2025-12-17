@@ -50,8 +50,8 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/Areeba-majid/Physical-AI-Humanoid-Robotics-Book/edit/master/',
-          showLastUpdateTime: true,
-          showLastUpdateAuthor: true,
+          showLastUpdateTime: false, // Disable git-based time update
+          showLastUpdateAuthor: false, // Disable git-based author update
         },
         blog: false, // Disable blog if not needed
         theme: {
