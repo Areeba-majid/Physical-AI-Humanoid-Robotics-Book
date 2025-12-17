@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from '@docusaurus/router';
+import { useLocation } from '@docusaurus/router';
 import Head from '@docusaurus/Head';
 import ChatBot from '../components/ChatBot';
 import ThemeToggle from '../components/ThemeToggle';
@@ -20,12 +20,16 @@ const simpleMarkdownToHtml = (text) => {
 };
 
 const ChapterDetail = () => {
-  const { id } = useParams();
+  const location = useLocation();
   const [chapter, setChapter] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showChat, setShowChat] = useState(false);
 
   useEffect(() => {
+    // Extract chapter ID from URL
+    const pathSegments = location.pathname.split('/');
+    const chapterId = pathSegments[pathSegments.length - 1];
+
     // In a real implementation, this would fetch data from the backend API
     // For now, we'll use mock data based on the ID
     const mockChapters = {
@@ -67,11 +71,11 @@ const ChapterDetail = () => {
 
     // Simulate API call
     setTimeout(() => {
-      const foundChapter = mockChapters[id];
+      const foundChapter = mockChapters[chapterId];
       setChapter(foundChapter);
       setLoading(false);
     }, 500);
-  }, [id]);
+  }, [location.pathname]);
 
   if (loading) {
     return (

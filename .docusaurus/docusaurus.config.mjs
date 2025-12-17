@@ -7,11 +7,11 @@ export default {
   "title": "AI-native Physical AI & Humanoid Robotics Textbook",
   "tagline": "An interactive educational platform with AI-powered features",
   "favicon": "img/favicon.ico",
-  "url": "https://your-docusaurus-site.example.com",
-  "baseUrl": "/",
-  "organizationName": "facebook",
-  "projectName": "docusaurus",
-  "onBrokenLinks": "throw",
+  "url": "https://Areeba-majid.github.io",
+  "baseUrl": "/Physical-AI-Humanoid-Robotics-Book/ur/",
+  "organizationName": "Areeba-majid",
+  "projectName": "Physical-AI-Humanoid-Robotics-Book",
+  "onBrokenLinks": "warn",
   "i18n": {
     "defaultLocale": "en",
     "locales": [
@@ -31,12 +31,14 @@ export default {
       "classic",
       {
         "docs": {
-          "sidebarPath": "C:\\Users\\HP\\Desktop\\hackathon\\book\\frontend\\sidebars.js",
-          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/"
+          "sidebarPath": "c:\\Users\\HP\\Desktop\\hackathon\\book\\frontend\\sidebars.js",
+          "editUrl": "https://github.com/Areeba-majid/Physical-AI-Humanoid-Robotics-Book/edit/master/",
+          "showLastUpdateTime": false,
+          "showLastUpdateAuthor": false
         },
         "blog": false,
         "theme": {
-          "customCss": "C:\\Users\\HP\\Desktop\\hackathon\\book\\frontend\\src\\css\\custom.css"
+          "customCss": "c:\\Users\\HP\\Desktop\\hackathon\\book\\frontend\\src\\css\\custom.css"
         }
       }
     ]
@@ -78,7 +80,7 @@ export default {
           "dropdownItemsBefore": []
         },
         {
-          "href": "https://github.com/facebook/docusaurus",
+          "href": "https://github.com/Areeba-majid/Physical-AI-Humanoid-Robotics-Book",
           "label": "GitHub",
           "position": "right"
         }
@@ -119,7 +121,7 @@ export default {
           "items": [
             {
               "label": "GitHub",
-              "href": "https://github.com/facebook/docusaurus"
+              "href": "https://github.com/Areeba-majid/Physical-AI-Humanoid-Robotics-Book"
             }
           ]
         }
@@ -353,18 +355,7 @@ export default {
       "maxHeadingLevel": 3
     }
   },
-  "plugins": [
-    [
-      "C:\\Users\\HP\\Desktop\\hackathon\\book\\frontend\\node_modules\\@cmfcmf\\docusaurus-search-local\\lib\\server\\index.js",
-      {
-        "indexDocs": true,
-        "indexBlog": false,
-        "indexPages": false,
-        "language": "en",
-        "maxSearchResults": 8
-      }
-    ]
-  ],
+  "plugins": [],
   "baseUrlIssueBanner": true,
   "future": {
     "v4": {

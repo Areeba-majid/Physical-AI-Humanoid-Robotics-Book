@@ -5,7 +5,7 @@
     "ur"
   ],
   "path": "i18n",
-  "currentLocale": "en",
+  "currentLocale": "ur",
   "localeConfigs": {
     "en": {
       "label": "English",
@@ -14,8 +14,8 @@
       "calendar": "gregory",
       "path": "en",
       "translate": false,
-      "url": "https://your-docusaurus-site.example.com",
-      "baseUrl": "/"
+      "url": "https://Areeba-majid.github.io",
+      "baseUrl": "/Physical-AI-Humanoid-Robotics-Book/"
     },
     "ur": {
       "label": "اردو",
@@ -24,8 +24,8 @@
       "calendar": "gregory",
       "path": "ur",
       "translate": true,
-      "url": "https://your-docusaurus-site.example.com",
-      "baseUrl": "/ur/"
+      "url": "https://Areeba-majid.github.io",
+      "baseUrl": "/Physical-AI-Humanoid-Robotics-Book/ur/"
     }
   }
 }

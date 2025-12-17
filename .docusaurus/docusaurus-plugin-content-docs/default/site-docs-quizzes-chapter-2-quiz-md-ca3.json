@@ -5,10 +5,10 @@
   "source": "@site/docs/quizzes/chapter2-quiz.md",
   "sourceDirName": "quizzes",
   "slug": "/quizzes/chapter2-quiz",
-  "permalink": "/docs/quizzes/chapter2-quiz",
+  "permalink": "/Physical-AI-Humanoid-Robotics-Book/ur/docs/quizzes/chapter2-quiz",
   "draft": false,
   "unlisted": false,
-  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/quizzes/chapter2-quiz.md",
+  "editUrl": "https://github.com/Areeba-majid/Physical-AI-Humanoid-Robotics-Book/edit/master/docs/quizzes/chapter2-quiz.md",
   "tags": [],
   "version": "current",
   "frontMatter": {
