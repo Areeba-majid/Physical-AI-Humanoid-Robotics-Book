@@ -1,0 +1,291 @@
+# API Contract: Integrated RAG Chatbot Development
+
+**Feature**: 001-rag-chatbot-spec
+**Date**: 2025-12-17
+
+## Overview
+This document defines the API contracts for the RAG chatbot system based on the functional requirements in the feature specification.
+
+## Base URL
+`https://api.rag-chatbot.com/v1`
+
+## Authentication
+All endpoints require authentication using a Bearer token in the Authorization header:
+```
+Authorization: Bearer {jwt_token}
+```
+
+## Common Error Responses
+All endpoints may return these common error responses:
+- `401 Unauthorized`: Invalid or missing authentication token
+- `403 Forbidden`: User lacks permission for the requested resource
+- `422 Unprocessable Entity`: Request validation failed
+- `500 Internal Server Error`: Server-side error occurred
+
+## Endpoints
+
+### 1. Ingest Book Content
+**POST** `/ingest`
+
+Ingest a book into the system, process its content, and generate vector embeddings.
+
+#### Request
+```json
+{
+  "title": "The Complete Guide to RAG Systems",
+  "author": "AI Expert",
+  "isbn": "978-1234567890",
+  "content": "Full text content of the book...",
+  "metadata": {
+    "publisher": "Tech Publishing",
+    "publication_year": 2023
+  }
+}
+```
+
+#### Request Validation
+- `title`: Required, non-empty string (max 500 chars)
+- `author`: Required, non-empty string (max 200 chars)
+- `isbn`: Optional, valid ISBN format (10 or 13 digits with optional hyphens)
+- `content`: Required, non-empty string
+- `metadata`: Optional, valid JSON object
+
+#### Response: `201 Created`
+```json
+{
+  "book_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "title": "The Complete Guide to RAG Systems",
+  "author": "AI Expert",
+  "status": "processing",
+  "message": "Book ingestion initiated successfully"
+}
+```
+
+#### Response Validation
+- `book_id`: UUID format
+- `title`: String matching input
+- `author`: String matching input
+- `status`: One of ["processing", "completed", "failed"]
+- `message`: Human-readable status message
+
+#### Error Response: `409 Conflict`
+If a book with the same ISBN already exists:
+```json
+{
+  "error": "Book already exists",
+  "message": "A book with this ISBN already exists in the system"
+}
+```
+
+### 2. Query Book Content (Global)
+**POST** `/query`
+
+Ask questions about the entire book content.
+
+#### Request
+```json
+{
+  "book_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "question": "What are the key principles of RAG systems?"
+}
+```
+
+#### Request Validation
+- `book_id`: Required, valid UUID format
+- `question`: Required, non-empty string (max 1000 chars)
+
+#### Response: `200 OK`
+```json
+{
+  "query_id": "f0e9d8c7-b6a5-4321-fedc-ba9876543210",
+  "book_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "question": "What are the key principles of RAG systems?",
+  "answer": "The key principles of RAG systems are...",
+  "sources": [
+    {
+      "chapter_id": "c9b8a7d6-e5f4-3210-fedc-ba9876543210",
+      "chapter_title": "Introduction to RAG Systems",
+      "section_id": "s5t4r3q2-p1o0-9876-5432-fedcba987654",
+      "section_title": "Core Principles",
+      "relevance_score": 0.87
+    }
+  ],
+  "processing_time": 1.23
+}
+```
+
+#### Response Validation
+- `query_id`: UUID format
+- `book_id`: UUID format matching input
+- `question`: String matching input
+- `answer`: Non-empty string with the response
+- `sources`: Array of source objects with chapter/section information
+- `processing_time`: Float representing time in seconds
+
+### 3. Query Specific Section
+**POST** `/query/section`
+
+Ask questions about a specific chapter or section of the book.
+
+#### Request
+```json
+{
+  "book_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "section_id": "s5t4r3q2-p1o0-9876-5432-fedcba987654",
+  "question": "Explain the concepts in this section?"
+}
+```
+
+#### Request Validation
+- `book_id`: Required, valid UUID format
+- `section_id`: Required, valid UUID format
+- `question`: Required, non-empty string (max 1000 chars)
+
+#### Response: `200 OK`
+```json
+{
+  "query_id": "f0e9d8c7-b6a5-4321-fedc-ba9876543210",
+  "book_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "section_id": "s5t4r3q2-p1o0-9876-5432-fedcba987654",
+  "question": "Explain the concepts in this section?",
+  "answer": "The concepts in this section are...",
+  "sources": [
+    {
+      "chapter_id": "c9b8a7d6-e5f4-3210-fedc-ba9876543210",
+      "chapter_title": "Advanced RAG Techniques",
+      "section_id": "s5t4r3q2-p1o0-9876-5432-fedcba987654",
+      "section_title": "Semantic Search Methods",
+      "relevance_score": 0.92
+    }
+  ],
+  "processing_time": 0.85
+}
+```
+
+#### Response Validation
+- Same as global query but includes `section_id`
+
+#### Error Response: `400 Bad Request`
+If the section doesn't belong to the specified book:
+```json
+{
+  "error": "Invalid section",
+  "message": "The specified section does not belong to the given book"
+}
+```
+
+### 4. Query User-Selected Text
+**POST** `/query/selection`
+
+Ask questions about user-selected text within the book.
+
+#### Request
+```json
+{
+  "book_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "selected_text": "The fundamental concept of RAG systems is retrieval-augmentation.",
+  "question": "What does retrieval-augmentation mean?"
+}
+```
+
+#### Request Validation
+- `book_id`: Required, valid UUID format
+- `selected_text`: Required, non-empty string (max 5000 chars)
+- `question`: Required, non-empty string (max 1000 chars)
+
+#### Response: `200 OK`
+```json
+{
+  "query_id": "f0e9d8c7-b6a5-4321-fedc-ba9876543210",
+  "book_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "selected_text": "The fundamental concept of RAG systems is retrieval-augmentation.",
+  "question": "What does retrieval-augmentation mean?",
+  "answer": "Retrieval-augmentation refers to the process of retrieving relevant information...",
+  "sources": [],
+  "processing_time": 0.67
+}
+```
+
+#### Response Validation
+- Same as global query but includes `selected_text` instead of section reference
+- Sources array will be empty for selection queries since answers are strictly based on selected text
+
+#### Error Response: `400 Bad Request`
+If the selected text is insufficient to answer the question:
+```json
+{
+  "error": "Insufficient context",
+  "message": "The selected text is insufficient to answer the provided question"
+}
+```
+
+### 5. Get Book Details
+**GET** `/books/{book_id}`
+
+Retrieve details about a specific book.
+
+#### Path Parameters
+- `book_id`: UUID - The ID of the book to retrieve
+
+#### Response: `200 OK`
+```json
+{
+  "id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "title": "The Complete Guide to RAG Systems",
+  "author": "AI Expert",
+  "isbn": "978-1234567890",
+  "created_at": "2023-10-15T10:30:00Z",
+  "chapter_count": 12,
+  "word_count": 85432,
+  "status": "available"
+}
+```
+
+#### Response Validation
+- All fields as defined in the Book entity
+
+#### Error Response: `404 Not Found`
+If the book doesn't exist or the user lacks access:
+```json
+{
+  "error": "Book not found",
+  "message": "The requested book does not exist or you don't have access to it"
+}
+```
+
+### 6. Get Book Chapters
+**GET** `/books/{book_id}/chapters`
+
+Retrieve the chapter list for a specific book.
+
+#### Path Parameters
+- `book_id`: UUID - The ID of the book
+
+#### Response: `200 OK`
+```json
+{
+  "book_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "chapters": [
+    {
+      "id": "c9b8a7d6-e5f4-3210-fedc-ba9876543210",
+      "title": "Introduction to RAG Systems",
+      "chapter_number": 1,
+      "page_start": 1,
+      "page_end": 25,
+      "section_count": 4
+    },
+    {
+      "id": "c8b7a6d5-e4f3-3210-fedc-ba9876543210",
+      "title": "Advanced RAG Techniques",
+      "chapter_number": 2,
+      "page_start": 26,
+      "page_end": 50,
+      "section_count": 5
+    }
+  ]
+}
+```
+
+#### Response Validation
+- `book_id`: UUID matching the path parameter
+- `chapters`: Array of chapter objects with the specified fields

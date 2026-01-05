@@ -1,0 +1,281 @@
+openapi: 3.0.0
+info:
+  title: Physical AI & Humanoid Robotics Textbook API
+  description: API for the Physical AI & Humanoid Robotics textbook with RAG chatbot
+  version: 1.0.0
+servers:
+  - url: https://api.textbook-rag.example.com
+    description: Production server
+  - url: https://staging-api.textbook-rag.example.com
+    description: Staging server
+
+paths:
+  /api/textbook/chapters:
+    get:
+      summary: Get all textbook chapters
+      description: Retrieve the list of all 6 textbook chapters with basic information
+      responses:
+        '200':
+          description: List of textbook chapters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChapterSummary'
+        '500':
+          description: Internal server error
+
+  /api/textbook/chapters/{chapterId}:
+    get:
+      summary: Get a specific chapter
+      description: Retrieve the content of a specific textbook chapter
+      parameters:
+        - name: chapterId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: The requested chapter content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chapter'
+        '404':
+          description: Chapter not found
+        '500':
+          description: Internal server error
+
+  /api/textbook/chapters/{chapterId}/sections:
+    get:
+      summary: Get sections of a chapter
+      description: Retrieve the list of sections within a specific chapter
+      parameters:
+        - name: chapterId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of sections in the chapter
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SectionSummary'
+        '404':
+          description: Chapter not found
+        '500':
+          description: Internal server error
+
+  /api/chatbot/ask:
+    post:
+      summary: Ask a question to the RAG chatbot
+      description: Submit a question and receive an answer based on textbook content with citations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuestionRequest'
+      responses:
+        '200':
+          description: Answer to the question with citations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuestionResponse'
+        '429':
+          description: Rate limit exceeded
+        '400':
+          description: Invalid request format
+        '500':
+          description: Internal server error
+
+  /api/chatbot/ask/chapter/{chapterId}:
+    post:
+      summary: Ask a question limited to a specific chapter
+      description: Submit a question and receive an answer based only on the specified chapter content with citations
+      parameters:
+        - name: chapterId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuestionRequest'
+      responses:
+        '200':
+          description: Answer to the question with citations from the specified chapter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuestionResponse'
+        '429':
+          description: Rate limit exceeded
+        '400':
+          description: Invalid request format
+        '404':
+          description: Chapter not found
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    ChapterSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the chapter
+        title:
+          type: string
+          description: Title of the chapter
+        chapter_number:
+          type: integer
+          description: Chapter number (1-6)
+        word_count:
+          type: integer
+          description: Number of words in the chapter
+      required:
+        - id
+        - title
+        - chapter_number
+        - word_count
+
+    Chapter:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the chapter
+        title:
+          type: string
+          description: Title of the chapter
+        content:
+          type: string
+          description: Full content of the chapter
+        chapter_number:
+          type: integer
+          description: Chapter number (1-6)
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Section'
+      required:
+        - id
+        - title
+        - content
+        - chapter_number
+
+    SectionSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the section
+        title:
+          type: string
+          description: Title of the section
+        section_number:
+          type: integer
+          description: Section number within the chapter
+      required:
+        - id
+        - title
+        - section_number
+
+    Section:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the section
+        title:
+          type: string
+          description: Title of the section
+        content:
+          type: string
+          description: Content of the section
+        section_number:
+          type: integer
+          description: Section number within the chapter
+      required:
+        - id
+        - title
+        - content
+        - section_number
+
+    QuestionRequest:
+      type: object
+      properties:
+        question:
+          type: string
+          description: The question to ask
+          example: "What are the main components of a humanoid robot?"
+        include_citations:
+          type: boolean
+          description: Whether to include citations in the response
+          default: true
+      required:
+        - question
+
+    QuestionResponse:
+      type: object
+      properties:
+        answer:
+          type: string
+          description: The answer to the question
+        citations:
+          type: array
+          description: List of sources used for the answer
+          items:
+            $ref: '#/components/schemas/Citation'
+        response_time:
+          type: number
+          format: float
+          description: Time taken to generate the response in seconds
+      required:
+        - answer
+        - citations
+        - response_time
+
+    Citation:
+      type: object
+      properties:
+        chapter_id:
+          type: string
+          format: uuid
+          description: ID of the chapter where information was found
+        chapter_title:
+          type: string
+          description: Title of the chapter where information was found
+        section_id:
+          type: string
+          format: uuid
+          description: ID of the section where information was found (optional)
+        section_title:
+          type: string
+          description: Title of the section where information was found (optional)
+        text_snippet:
+          type: string
+          description: Snippet of the original text used
+      required:
+        - chapter_id
+        - chapter_title
+        - text_snippet
